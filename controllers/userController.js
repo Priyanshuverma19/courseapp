@@ -16,7 +16,7 @@ export const register= catchAsyncError(async(req,res,next)=>{
 
     console.log(name,email,password)
    
-    if(!name || !email || !password||!file)return next(new ErrorHandler("please enter all fields",400));
+    if(!name || !email || !password || file)return next(new ErrorHandler("please enter all fields",400));
 
 let user= await User.findOne({email});
 
@@ -33,8 +33,8 @@ user=  await User.create({
     email,
     password,
     avatar:{
-       public_id:mycloud.public_id,
-       url:mycloud.secure_url,
+       public_id:"tempid",
+       url:"tempurl",
     },
 });
 
